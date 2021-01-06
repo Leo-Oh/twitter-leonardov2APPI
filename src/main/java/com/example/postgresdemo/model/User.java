@@ -13,12 +13,9 @@ public class User extends AuditModel {
             name = "user_generator",
             sequenceName = "user_sequence",
             initialValue = 1000
+           
     )
     private Long id;
-
-    
-    
-
 
     @NotBlank
     @Size(min = 3, max = 20)

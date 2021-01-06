@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class TweetController {
 
@@ -23,6 +24,8 @@ public class TweetController {
     public List<Tweet> getTweetsByUserId(@PathVariable Long userId) {
         return tweetRepository.findByUserId(userId);
     }
+
+
 
     @PostMapping("/users/{userId}/tweets")
     public Tweet addTweet(@PathVariable Long userId,
@@ -45,8 +48,6 @@ public class TweetController {
         return tweetRepository.findById(tweetId)
                 .map(tweet -> {
                     tweet.setTweetw(tweetRequest.getTweetw());
-                    //tweet.setTweetw(tweetRequest.getTweetw());
-                    
                     tweet.setUrlimage(tweetRequest.getUrlimage());
                     return tweetRepository.save(tweet);
                 }).orElseThrow(() -> new ResourceNotFoundException("Tweet not found with id " + tweetId));

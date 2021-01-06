@@ -14,6 +14,7 @@ public class Tweet extends AuditModel {
             name = "tweet_generator",
             sequenceName = "tweet_sequence",
             initialValue = 1000
+           
     )
     private Long id;
 
